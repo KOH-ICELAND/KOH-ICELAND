@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Dadu VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --diamond: #7DF9FF;
+            --vip-red: #FF2400;
+            --dark-bg: #0a0a12;
+            --platinum: #E5E4E2;
+            --crystal: #A7D8DE;
+            --velvet: #800020;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=mateusz-butkiewicz-8k4o_7vKXwQ-unsplash.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .money-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(10,10,10,0.9) 0%, rgba(0,0,0,0.95) 100%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 20px;
+            padding: 50px;
+            background: rgba(15, 15, 25, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+            border: 3px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            z-index: 1;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        h1 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            font-size: 3.2rem;
+            letter-spacing: 4px;
+            position: relative;
+        }
+        
+        h1::before, h1::after {
+            content: "✦";
+            position: absolute;
+            color: var(--gold);
+            font-size: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+        
+        h1::before {
+            left: -40px;
+        }
+        
+        h1::after {
+            right: -40px;
+        }
+        
+        .prediction-box {
+            margin: 50px 0;
+            padding: 40px;
+            border-radius: 15px;
+            font-size: 36px;
+            font-weight: 700;
+            min-height: 80px;
+            transition: all 0.5s ease-out;
+            background: rgba(30, 30, 40, 0.9);
+            border: 3px solid;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .prediction-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            animation: shine 4s infinite;
+        }
+        
+        .prediction-box::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+        
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            height: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        
+        .small {
+            color: #FF9E9E;
+            border-color: var(--vip-red);
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+            background: linear-gradient(135deg, rgba(40, 10, 10, 0.8), rgba(70, 10, 10, 0.9));
+        }
+        
+        .big {
+            color: var(--diamond);
+            border-color: var(--diamond);
+            text-shadow: 0 0 20px rgba(125, 249, 255, 0.8);
+            background: linear-gradient(135deg, rgba(10, 30, 40, 0.8), rgba(10, 50, 70, 0.9));
+        }
+        
+        .current-time {
+            font-size: 22px;
+            margin-bottom: 35px;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .info {
+            margin-top: 50px;
+            font-size: 18px;
+            color: #CCC;
+            line-height: 1.8;
+            background: rgba(20, 20, 30, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+        
+        .info::before {
+            content: "ℹ️";
+            position: absolute;
+            left: 15px;
+            top: -15px;
+            font-size: 24px;
+            background: rgba(15, 15, 25, 0.9);
+            padding: 0 10px;
+            border-radius: 50%;
+        }
+        
+        button {
+            padding: 20px 60px;
+            font-size: 20px;
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: #111;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 40px 0;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.8);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cinzel', serif;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.9);
+        }
+        
+        button:active {
+            transform: translateY(2px);
+        }
+        
+        button::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--gold);
+            border-radius: 60px;
+            animation: pulse 2s infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0; }
+        }
+        
+        button:hover::before {
+            animation: pulse 2s infinite;
+        }
+        
+        .status {
+            font-style: italic;
+            color: var(--gold);
+            margin: 30px 0;
+            font-size: 18px;
+            min-height: 24px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--gold);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            position: relative;
+        }
+        
+        .logo span {
+            margin: 0 20px;
+        }
+        
+        .dice-icon {
+            font-size: 42px;
+            filter: drop-shadow(0 0 12px var(--gold));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* VIP Hacking Popup */
+        .hack-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 10, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        
+        .hack-popup.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .hack-container {
+            background: linear-gradient(135deg, rgba(20,20,30,0.95), rgba(10,10,20,0.98));
+            border: 3px solid var(--diamond);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            padding: 50px;
+            box-shadow: 0 0 60px rgba(125, 249, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hack-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--diamond), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        .hack-container::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(125, 249, 255, 0.2);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+        
+        .hack-header {
+            color: var(--diamond);
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(125, 249, 255, 0.8);
+            letter-spacing: 4px;
+            position: relative;
+        }
+        
+        .hack-header::before, .hack-header::after {
+            content: "✧";
+            position: absolute;
+            color: var(--diamond);
+            font-size: 2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+        
+        .hack-header::before {
+            left: -50px;
+        }
+        
+        .hack-header::after {
+            right: -50px;
+        }
+        
+        .hack-content {
+            color: var(--diamond);
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.8;
+            height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 15, 20, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(125, 249, 255, 0.3);
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 30px rgba(125, 249, 255, 0.2);
+        }
+        
+        .hack-progress {
+            width: 100%;
+            height: 15px;
+            background: rgba(20, 20, 30, 0.9);
+            border-radius: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            border: 1px solid rgba(125, 249, 255, 0.2);
+        }
+        
+        .hack-progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold), var(--diamond));
+            transition: width 0.1s linear;
+            box-shadow: 0 0 20px var(--gold);
+        }
+        
+        .hack-status {
+            color: var(--diamond);
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 30px;
+            min-height: 24px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+        
+        /* Money rain effect */
+        .money-rain {
+            position: fixed;
+            top: -50px;
+            font-size: 50px;
+            z-index: -1;
+            animation: money-fall linear forwards;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+        
+        @keyframes money-fall {
+            to {
+                transform: translateY(calc(100vh + 50px)) rotate(360deg);
+            }
+        }
+        
+        /* Diamond sparkle effect */
+        .diamond-sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: sparkle 1.5s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        /* Floating VIP badge */
+        .vip-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            transform: rotate(15deg);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
+            z-index: 2;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Luxury border elements */
+        .corner-decoration {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--gold);
+            opacity: 0.6;
+        }
+        
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 15px 0 0 0;
+        }
+        
+        .top-right {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0 15px 0 0;
+        }
+        
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-right: none;
+            border-top: none;
+            border-radius: 0 0 0 15px;
+        }
+        
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+            border-radius: 0 0 15px 0;
+        }
+
+        /* History button styles */
+        .history-button {
+            padding: 15px 40px;
+            font-size: 16px;
+            background: linear-gradient(135deg, var(--platinum), var(--crystal));
+            color: #111;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 0 40px 0;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(125, 249, 255, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cinzel', serif;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .history-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(125, 249, 255, 0.7);
+        }
+
+        .history-button:active {
+            transform: translateY(1px);
+        }
+
+        /* History popup styles */
+        .history-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 10, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .history-popup.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .history-container {
+            background: linear-gradient(135deg, rgba(20,20,30,0.95), rgba(10,10,20,0.98));
+            border: 3px solid var(--platinum);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            box-shadow: 0 0 60px rgba(229, 228, 226, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--platinum), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .history-header {
+            color: var(--platinum);
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(229, 228, 226, 0.8);
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .history-header::before, .history-header::after {
+            content: "✧";
+            position: absolute;
+            color: var(--platinum);
+            font-size: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+
+        .history-header::before {
+            left: -40px;
+        }
+
+        .history-header::after {
+            right: -40px;
+        }
+
+        .history-content {
+            color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            max-height: 400px;
+            overflow-y: auto;
+            background: rgba(20, 20, 30, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(229, 228, 226, 0.3);
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 20px rgba(229, 228, 226, 0.2);
+        }
+
+        .history-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: rgba(30, 30, 40, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item.small {
+            border-left: 4px solid var(--vip-red);
+        }
+
+        .history-item.big {
+            border-left: 4px solid var(--diamond);
+        }
+
+        .history-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .history-time {
+            font-size: 12px;
+            color: var(--gold);
+            margin-top: 5px;
+        }
+
+        .history-close {
+            padding: 10px 30px;
+            font-size: 16px;
+            background: linear-gradient(135deg, var(--platinum), var(--crystal));
+            color: #111;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(229, 228, 226, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .history-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(229, 228, 226, 0.7);
+        }
+
+        .no-history {
+            color: #AAA;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="money-overlay"></div>
+    
+    <!-- Money rain elements will be added by JavaScript -->
+    
+    <div class="container">
+        <div class="vip-badge"> VVIP X EXCLUSIVE</div>
+        <div class="corner-decoration top-left"></div>
+        <div class="corner-decoration top-right"></div>
+        <div class="corner-decoration bottom-left"></div>
+        <div class="corner-decoration bottom-right"></div>
+        
+        <div class="logo">
+            <span class="dice-icon">🎲</span>
+            <span>KOH ICELAND</span>
+            <span class="dice-icon">🎲</span>
+        </div>
+        <h1>PREDIKSI DADU VIP</h1>
+        <div class="current-time" id="currentTime">SISTEM AKTIF...</div>
+        <div class="status" id="statusInfo"></div>
+        
+        <div id="predictionResult" class="prediction-box hidden">
+            <!-- Prediksi akan muncul di sini -->
+        </div>
+        
+        <button onclick="startHacking()" id="predictButton">
+            <span style="font-size: 28px; margin-right: 15px;">💎</span> MULAI PREDIKSI
+        </button>
+
+        <button class="history-button" onclick="showHistory()">
+            <span style="font-size: 20px; margin-right: 10px;">📜</span> RIWAYAT PREDIKSI
+        </button>
+        
+        <div class="info">
+            <p>• Sistem prediksi eksklusif VIP</p>
+            <p>• Range KECIL (9-31) | Range BESAR (32-54)</p>
+            <p>• Akurasi prediksi 90%</p>
+            <p>• Akses server pribadi berkecepatan tinggi</p>
+            <p>• Menggunakan prediksi real time</p>
+        </div>
+        
+        <footer class="luxury-footer">
+            <span class="diamond-icon">♦</span> © 2025 KOH ICELAND | ALL RIGHTS RESERVED <span class="diamond-icon">♦</span>
+        </footer>
+    </div>
+
+    <!-- VIP Hacking Popup -->
+    <div class="hack-popup" id="hackPopup">
+        <div class="hack-container">
+            <div class="hack-header">KOH ICELAND VIP</div>
+            <div class="hack-content" id="hackContent">
+                > Mengaktifkan sistem prediksi VIP...<br>
+                > Menghubungkan ke server pribadi...<br>
+            </div>
+            <div class="hack-progress">
+                <div class="hack-progress-bar" id="hackProgress"></div>
+            </div>
+            <div class="hack-status" id="hackStatus">STATUS: MEMULAI PROSES...</div>
+        </div>
+    </div>
+
+    <!-- History Popup -->
+    <div class="history-popup" id="historyPopup">
+        <div class="history-container">
+            <div class="history-header">RIWAYAT PREDIKSI</div>
+            <div class="history-content" id="historyContent">
+                <div class="no-history">Belum ada riwayat prediksi</div>
+            </div>
+            <button class="history-close" onclick="hideHistory()">TUTUP</button>
+        </div>
+    </div>
+
+    <script>
+        let lastPredictionTime = null;
+        let currentPrediction = null;
+        let predictionVisible = false;
+        let hackInterval = null;
+        let moneyInterval = null;
+        let sparkleInterval = null;
+        let predictionHistory = [];
+
+        // Load history from localStorage when page loads
+        function loadHistory() {
+            const savedHistory = localStorage.getItem('dicePredictionHistory');
+            if (savedHistory) {
+                predictionHistory = JSON.parse(savedHistory);
+            }
+        }
+
+        // Save history to localStorage
+        function saveHistory() {
+            localStorage.setItem('dicePredictionHistory', JSON.stringify(predictionHistory));
+        }
+
+        // Create money rain effect
+        function createMoneyRain() {
+            const money = document.createElement('div');
+            money.className = 'money-rain';
+            const moneyTypes = ['💵', '💰', '💴', '💶', '💲', '💸'];
+            money.innerHTML = moneyTypes[Math.floor(Math.random() * moneyTypes.length)];
+            money.style.left = Math.random() * 100 + 'vw';
+            money.style.animationDuration = Math.random() * 2 + 3 + 's';
+            money.style.opacity = Math.random() * 0.5 + 0.5;
+            money.style.fontSize = (Math.random() * 20 + 40) + 'px';
+            document.body.appendChild(money);
+            
+            // Remove after animation
+            setTimeout(() => {
+                money.remove();
+            }, 5000);
+        }
+
+        // Create diamond sparkle effect
+        function createSparkle() {
+            const container = document.querySelector('.container');
+            const sparkle = document.createElement('div');
+            sparkle.className = 'diamond-sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Generate random prediction
+        function generateRandomPrediction() {
+            const random = Math.random();
+            return random < 0.5 ? "KECIL (9-31)" : "BESAR (32-54)";
+        }
+
+        // Add hacking text
+        function addHackText(text) {
+            const hackContent = document.getElementById('hackContent');
+            hackContent.innerHTML += `> ${text}<br>`;
+            hackContent.scrollTop = hackContent.scrollHeight;
+            
+            // Add sparkle effect to each new line
+            const lines = hackContent.querySelectorAll('br');
+            if (lines.length > 0) {
+                const lastLine = lines[lines.length - 1];
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'diamond-sparkle';
+                        sparkle.style.left = Math.random() * 100 + '%';
+                        sparkle.style.top = Math.random() * 100 + '%';
+                        hackContent.appendChild(sparkle);
+                        setTimeout(() => sparkle.remove(), 1500);
+                    }, i * 200);
+                }
+            }
+        }
+
+        // Start hacking effect (5 seconds)
+        function startHacking() {
+            // Start money rain
+            moneyInterval = setInterval(createMoneyRain, 150);
+            
+            // Start sparkle effect
+            sparkleInterval = setInterval(createSparkle, 300);
+            
+            const hackPopup = document.getElementById('hackPopup');
+            const hackProgress = document.getElementById('hackProgress');
+            const hackStatus = document.getElementById('hackStatus');
+            const button = document.getElementById('predictButton');
+            
+            // Reset popup
+            document.getElementById('hackContent').innerHTML = '> Mengaktifkan sistem prediksi VIP...<br>> Menghubungkan ke server pribadi...<br>';
+            hackProgress.style.width = '0%';
+            hackStatus.textContent = 'STATUS: MEMULAI PROSES...';
+            
+            // Show popup
+            hackPopup.classList.add('active');
+            button.disabled = true;
+            
+            // Simulate hacking process (5 seconds)
+            let progress = 0;
+            const startTime = Date.now();
+            const duration = 5000; // 5 seconds
+            
+            const hackMessages = [
+                "Memverifikasi kredensial VIP...",
+                "Mengakses database eksklusif...",
+                "Memuat 2,158 data historis...",
+                "Menjalankan algoritma prediktif...",
+                "Menganalisis pola tersembunyi...",
+                "Menghitung probabilitas...",
+                "Memverifikasi hasil dengan AI...",
+                "Menyempurnakan prediksi akhir...",
+                "Mengenkripsi saluran komunikasi...",
+                "Mengoptimalkan parameter prediksi...",
+                "Memvalidasi hasil dengan blockchain...",
+                "Menerapkan filter statistik canggih..."
+            ];
+            
+            hackInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                progress = Math.min(elapsed / duration * 100, 100);
+                
+                hackProgress.style.width = `${progress}%`;
+                
+                // Add random messages
+                if (progress < 90 && Math.random() > 0.7) {
+                    const randomMessage = hackMessages[Math.floor(Math.random() * hackMessages.length)];
+                    addHackText(randomMessage);
+                }
+                
+                // Update status
+                if (progress < 30) {
+                    hackStatus.textContent = `STATUS: MENGUMPULKAN DATA... ${Math.floor(progress)}%`;
+                } else if (progress < 60) {
+                    hackStatus.textContent = `STATUS: ANALISIS POLA... ${Math.floor(progress)}%`;
+                } else if (progress < 90) {
+                    hackStatus.textContent = `STATUS: GENERATE PREDIKSI... ${Math.floor(progress)}%`;
+                } else {
+                    hackStatus.innerHTML = '<span style="color:#FFD700">STATUS: PREDIKSI SIAP!</span>';
+                }
+                
+                // Complete
+                if (progress >= 100) {
+                    clearInterval(hackInterval);
+                    clearInterval(moneyInterval);
+                    clearInterval(sparkleInterval);
+                    addHackText("Prediksi VIP berhasil dihasilkan!");
+                    setTimeout(() => {
+                        hackPopup.classList.remove('active');
+                        showPrediction();
+                        button.disabled = false;
+                    }, 800);
+                }
+            }, 50);
+        }
+
+        // Show final prediction
+        function showPrediction() {
+            const now = new Date();
+            const predictionElement = document.getElementById('predictionResult');
+            const statusElement = document.getElementById('statusInfo');
+            
+            // Generate new prediction if needed
+            if (!currentPrediction || !lastPredictionTime || (now - lastPredictionTime) >= 5 * 60 * 1000) {
+                currentPrediction = generateRandomPrediction();
+                lastPredictionTime = now;
+                statusElement.innerHTML = "<span style='color:#FFD700'>PREDIKSI VIP TERUPDATE</span>";
+                
+                // Add to history with full date and time
+                const historyItem = {
+                    prediction: currentPrediction,
+                    date: now.toLocaleDateString('id-ID', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric' 
+                    }),
+                    time: now.toLocaleTimeString('id-ID', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    }),
+                    type: currentPrediction.includes("KECIL") ? "small" : "big"
+                };
+                predictionHistory.unshift(historyItem);
+                
+                // Keep only last 100 predictions (can be adjusted)
+                if (predictionHistory.length > 100) {
+                    predictionHistory = predictionHistory.slice(0, 100);
+                }
+                
+                // Save to localStorage
+                saveHistory();
+            } else {
+                const timeLeft = Math.ceil((5 * 60 * 1000 - (now - lastPredictionTime)) / 1000 / 60);
+                statusElement.innerHTML = `<span style='color:#FFD700'>Valid untuk ${timeLeft} menit berikutnya</span>`;
+            }
+            
+            // Show prediction with animation
+            setTimeout(() => {
+                predictionElement.textContent = `HASIL VIP: ${currentPrediction}`;
+                predictionElement.className = currentPrediction.includes("KECIL") 
+                    ? "prediction-box small" 
+                    : "prediction-box big";
+                
+                // Add celebration effect
+                if (currentPrediction.includes("KECIL")) {
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            const spark = document.createElement('div');
+                            spark.className = 'diamond-sparkle';
+                            spark.style.left = Math.random() * 100 + '%';
+                            spark.style.top = Math.random() * 100 + '%';
+                            spark.style.background = 'rgba(255, 100, 100, 0.8)';
+                            predictionElement.appendChild(spark);
+                            setTimeout(() => spark.remove(), 1000);
+                        }, i * 100);
+                    }
+                } else {
+                    for (let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            const spark = document.createElement('div');
+                            spark.className = 'diamond-sparkle';
+                            spark.style.left = Math.random() * 100 + '%';
+                            spark.style.top = Math.random() * 100 + '%';
+                            spark.style.background = 'rgba(125, 249, 255, 0.8)';
+                            predictionElement.appendChild(spark);
+                            setTimeout(() => spark.remove(), 1000);
+                        }, i * 100);
+                    }
+                }
+            }, 100);
+            
+            predictionVisible = true;
+            
+            // Hide prediction after 5 minutes
+            setTimeout(() => {
+                if (predictionVisible) {
+                    predictionElement.className += " hidden";
+                    predictionVisible = false;
+                    statusElement.innerHTML = "<span style='color:#FF2400'>Sesi prediksi telah berakhir</span>";
+                }
+            }, 5 * 60 * 1000);
+        }
+
+        // Show history popup
+        function showHistory() {
+            const historyPopup = document.getElementById('historyPopup');
+            const historyContent = document.getElementById('historyContent');
+            
+            // Clear existing content
+            historyContent.innerHTML = '';
+            
+            if (predictionHistory.length === 0) {
+                historyContent.innerHTML = '<div class="no-history">Belum ada riwayat prediksi</div>';
+            } else {
+                predictionHistory.forEach(item => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = `history-item ${item.type}`;
+                    historyItem.innerHTML = `
+                        <div class="history-details">
+                            <span>${item.prediction}</span>
+                            <span class="history-time">${item.date} - ${item.time}</span>
+                        </div>
+                    `;
+                    historyContent.appendChild(historyItem);
+                });
+            }
+            
+            historyPopup.classList.add('active');
+        }
+
+        // Hide history popup
+        function hideHistory() {
+            document.getElementById('historyPopup').classList.remove('active');
+        }
+
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('currentTime').textContent = 
+                `🕒 ${hours}:${minutes}:${seconds} WIB | SISTEM VIP AKTIF`;
+        }
+
+        // Initialize
+        window.onload = function() {
+            // Load saved history
+            loadHistory();
+            
+            updateTime();
+            setInterval(updateTime, 1000);
+            document.getElementById('statusInfo').innerHTML = "<span style='color:#FFD700'>Tekan tombol untuk prediksi VIP</span>";
+            
+            // Initial sparkle effects
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createSparkle, i * 300);
+            }
+        };
+    </script>
+</body>
+</html>

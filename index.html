@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOH ICELAND | VIP Luxury Prediction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Marcellus&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --luxury-gold: #D4AF37;
+      --gold-light: #FFE8A0;
+      --gold-dark: #996515;
+      --diamond: #7DF9FF;
+      --velvet-black: #050505;
+      --rich-black: #0F0B0A;
+      --text-ivory: #FFFFF0;
+      --emerald: #50C878;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Marcellus', serif;
+      background: 
+        linear-gradient(rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.95)),
+        url('NAGA.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-ivory);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Diamond Particles */
+    .diamond-particle {
+      position: fixed;
+      font-size: 1rem;
+      color: var(--diamond);
+      opacity: 0;
+      animation: diamond-fall linear forwards;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes diamond-fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.5; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Luxury Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(to bottom, var(--rich-black) 60%, transparent);
+      border-bottom: 1px solid var(--luxury-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    .luxury-logo {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      color: var(--luxury-gold);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      position: relative;
+      padding-left: 3rem;
+    }
+    
+    .luxury-logo::before {
+      content: "♛";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--luxury-gold);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.1); }
+    }
+    
+    .header-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .luxury-btn {
+      background: transparent;
+      color: var(--luxury-gold);
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--luxury-gold);
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tutorial-btn {
+      background: linear-gradient(135deg, var(--emerald), #90EE90);
+      color: var(--rich-black);
+      border: none;
+    }
+    
+    .luxury-btn:hover {
+      background: rgba(212, 175, 55, 0.1);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .tutorial-btn:hover {
+      background: linear-gradient(135deg, var(--emerald), #7DCEA0);
+      box-shadow: 0 0 15px rgba(80, 200, 120, 0.5);
+    }
+    
+    .luxury-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+      transition: all 0.6s ease;
+    }
+    
+    .luxury-btn:hover::before {
+      left: 100%;
+    }
+    
+    /* Luxury Main Content */
+    .luxury-container {
+      max-width: 900px;
+      margin: 4rem auto;
+      background: rgba(15, 15, 15, 0.4);
+      border: 1px solid var(--luxury-gold);
+      padding: 4rem;
+      position: relative;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+    }
+    
+    .luxury-container::before,
+    .luxury-container::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid var(--luxury-gold);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .luxury-container::before {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+    
+    .luxury-container::after {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .luxury-container::after {
+      animation: shine-corner 6s infinite;
+    }
+
+    @keyframes shine-corner {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    
+    .luxury-section {
+      margin-bottom: 3.5rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .luxury-section::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--luxury-gold), transparent);
+    }
+    
+    .luxury-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--luxury-gold);
+      letter-spacing: 1px;
+      position: relative;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    
+    .luxury-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--luxury-gold);
+      box-shadow: 0 0 10px var(--luxury-gold);
+    }
+    
+    .luxury-text {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+      color: var(--text-ivory);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    
+    .gold-accent {
+      color: var(--gold-light);
+      font-weight: 400;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+      position: relative;
+    }
+
+    .gold-accent::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--gold-light);
+      opacity: 0.5;
+    }
+    
+    /* Luxury Footer */
+    .luxury-footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      color: var(--luxury-gold);
+      opacity: 0.7;
+      margin-top: auto;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .luxury-footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+    }
+    
+    /* Decorative Elements */
+    .diamond-icon {
+      color: var(--diamond);
+      margin: 0 0.5rem;
+      text-shadow: 0 0 8px rgba(125, 249, 255, 0.5);
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1.2rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .luxury-logo {
+        font-size: 1.8rem;
+        padding-left: 2.5rem;
+      }
+      
+      .luxury-logo::before {
+        font-size: 1.8rem;
+      }
+      
+      .luxury-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .luxury-container {
+        padding: 3rem 2rem;
+        margin: 2.5rem 1rem;
+      }
+      
+      .luxury-title {
+        font-size: 1.8rem;
+      }
+      
+      .luxury-text {
+        font-size: 1.05rem;
+      }
+
+      .header-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .luxury-logo {
+        font-size: 1.5rem;
+        padding-left: 2rem;
+      }
+      
+      .luxury-container {
+        padding: 2.5rem 1.5rem;
+      }
+      
+      .luxury-section {
+        padding-left: 1.5rem;
+      }
+      
+      .luxury-title {
+        font-size: 1.5rem;
+      }
+
+      .luxury-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Diamond Particles Background -->
+  <div id="diamondParticles"></div>
+
+  <header>
+    <h1 class="luxury-logo">KOH ICELAND</h1>
+    <div class="header-buttons">
+      <button class="luxury-btn tutorial-btn" onclick="location.href='tutorial.html'">
+        <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> TUTORIAL
+      </button>
+      <button class="luxury-btn" onclick="location.href='login.html'">
+        <i class="fas fa-lock-open" style="margin-right: 8px;"></i> MASUK
+      </button>
+    </div>
+  </header>
+
+  <main class="luxury-container">
+    <section class="luxury-section">
+      <h2 class="luxury-title">PREDIKSI <span class="diamond-icon">♦</span> VIP</h2>
+      <p class="luxury-text">
+        Sistem prediksi eksklusif kami menggunakan <span class="gold-accent">algoritma canggih</span> dan analisis data real-time untuk memberikan prediksi dengan akurasi tertinggi. Dibangun berdasarkan <span class="gold-accent">2,158 data historis</span> dan pola tersembunyi yang hanya dapat diakses oleh member VIP.
+      </p>
+      <p class="luxury-text">
+        Setiap prediksi melalui proses <span class="gold-accent">3 tahap verifikasi</span> oleh sistem AI kami sebelum disajikan kepada Anda.
+      </p>
+    </section>
+
+    <section class="luxury-section">
+      <h2 class="luxury-title">MANAJEMEN <span class="diamond-icon">♦</span> RISIKO</h2>
+      <p class="luxury-text">
+        Meskipun memiliki akurasi <span class="gold-accent">97.5%</span>, prediksi kami bukanlah jaminan mutlak. Faktor eksternal seperti perubahan algoritma permainan atau variasi acak dapat mempengaruhi hasil.
+      </p>
+      <p class="luxury-text">
+        Setiap prediksi memiliki masa berlaku <span class="gold-accent">5 menit</span> untuk memastikan Anda selalu bekerja dengan data terbaru dan terakurat.
+      </p>
+    </section>
+  </main>
+  
+  <footer class="luxury-footer">
+    <span class="diamond-icon">♦</span> © 2025 KOH ICELAND | ALL RIGHTS RESERVED <span class="diamond-icon">♦</span>
+  </footer>
+
+  <script>
+    // Create diamond particles
+    function createDiamondParticle() {
+      const diamond = document.createElement('div');
+      diamond.className = 'diamond-particle';
+      diamond.innerHTML = '♦';
+      diamond.style.left = Math.random() * 100 + 'vw';
+      diamond.style.animationDuration = Math.random() * 3 + 2 + 's';
+      diamond.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      diamond.style.opacity = Math.random() * 0.3;
+      document.getElementById('diamondParticles').appendChild(diamond);
+      
+      setTimeout(() => {
+        diamond.remove();
+      }, 5000);
+    }
+    
+    // Initialize diamond particles
+    function initDiamonds() {
+      setInterval(createDiamondParticle, 300);
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createDiamondParticle, i * 150);
+      }
+    }
+    
+    // Initialize on load
+    window.onload = function() {
+      initDiamonds();
+    };
+  </script>
+</body>
+</html>

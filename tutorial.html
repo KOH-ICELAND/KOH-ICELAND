@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Prediksi | KOH ICELAND VIP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --luxury-gold: #D4AF37;
+      --gold-light: #FFE8A0;
+      --gold-dark: #996515;
+      --diamond: #7DF9FF;
+      --velvet-black: #050505;
+      --rich-black: #0F0B0A;
+      --text-ivory: #FFFFF0;
+      --emerald: #50C878;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: 
+        radial-gradient(ellipse at center, var(--velvet-black) 0%, rgba(0,0,0,0.98) 100%),
+        url('NAGA.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-ivory);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+    
+    .luxury-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, var(--velvet-black) 0%, rgba(0,0,0,0.98) 100%);
+      z-index: -1;
+    }
+    
+    /* Diamond Particles */
+    .diamond-particle {
+      position: fixed;
+      font-size: 1rem;
+      color: var(--diamond);
+      opacity: 0;
+      animation: diamond-fall linear forwards;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes diamond-fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.5; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Header */
+    .tutorial-header {
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+    
+    .back-btn {
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      color: var(--luxury-gold);
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    
+    .tutorial-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      color: var(--gold-light);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+    }
+    
+    .tutorial-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Tutorial Container */
+    .tutorial-container {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    
+    /* Tutorial Steps */
+    .tutorial-step {
+      background: rgba(20, 20, 30, 0.6);
+      border-left: 4px solid var(--luxury-gold);
+      border-radius: 0 8px 8px 0;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .tutorial-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+      transition: 0.5s;
+    }
+    
+    .tutorial-step:hover::before {
+      left: 100%;
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 50px;
+      height: 50px;
+      background: var(--luxury-gold);
+      color: var(--rich-black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+    
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      padding-left: 3rem;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    
+    .step-content {
+      padding-left: 3rem;
+    }
+    
+    .step-content p {
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .step-content ul {
+      margin: 1rem 0 1rem 2rem;
+    }
+    
+    .step-content li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    .step-content li::before {
+      content: "•";
+      color: var(--luxury-gold);
+      font-size: 1.5rem;
+      position: absolute;
+      left: -1.5rem;
+      top: -0.5rem;
+    }
+    
+    .important-note {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--luxury-gold);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+    
+    .important-note::before {
+      content: "!";
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      width: 30px;
+      height: 30px;
+      background: var(--luxury-gold);
+      color: var(--rich-black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+    
+    .note-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    /* Footer */
+    .tutorial-footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .tutorial-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .tutorial-footer a:hover {
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .tutorial-title {
+        font-size: 2.2rem;
+      }
+      
+      .tutorial-subtitle {
+        font-size: 1rem;
+      }
+      
+      .tutorial-step {
+        padding: 1.5rem;
+      }
+      
+      .step-title {
+        font-size: 1.3rem;
+        padding-left: 2.5rem;
+      }
+      
+      .step-content {
+        padding-left: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .tutorial-title {
+        font-size: 1.8rem;
+      }
+      
+      .back-btn {
+        left: 1rem;
+        top: 1rem;
+      }
+      
+      .tutorial-header {
+        padding: 4rem 1rem 2rem;
+      }
+      
+      .tutorial-step {
+        padding: 1.5rem 1rem;
+      }
+      
+      .step-title {
+        padding-left: 2rem;
+      }
+      
+      .step-content {
+        padding-left: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="luxury-overlay"></div>
+  
+  <!-- Diamond Particles Background -->
+  <div id="diamondParticles"></div>
+  
+  <!-- Tutorial Header -->
+  <header class="tutorial-header">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Kembali
+    </a>
+    <h1 class="tutorial-title">PANDUAN PREDIKSI VIP</h1>
+    <p class="tutorial-subtitle">Pelajari cara menggunakan sistem prediksi eksklusif kami untuk hasil maksimal</p>
+  </header>
+  
+  <!-- Tutorial Container -->
+  <div class="tutorial-container">
+    <!-- Step 1 -->
+    <div class="tutorial-step">
+      <div class="step-number">1</div>
+      <h2 class="step-title">Login ke Akun VIP</h2>
+      <div class="step-content">
+        <p>Untuk mengakses sistem prediksi:</p>
+        <ul>
+          <li>Masuk ke halaman login menggunakan username dan password VIP Anda</li>
+          <li>Pastikan koneksi internet stabil sebelum login</li>
+          <li>Jika lupa password, hubungi admin melalui WhatsApp VIP</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Step 2 -->
+    <div class="tutorial-step">
+      <div class="step-number">2</div>
+      <h2 class="step-title">Memulai Prediksi</h2>
+      <div class="step-content">
+        <p>Setelah login:</p>
+        <ul>
+          <li>Klik tombol "MULAI PREDIKSI" di halaman utama</li>
+          <li>Sistem akan memproses data selama 5 detik</li>
+          <li>Hasil prediksi akan muncul dengan jelas di layar</li>
+        </ul>
+        <div class="important-note">
+          <span class="note-title">PENTING:</span>
+          <p>Prediksi hanya valid selama 5 menit setelah muncul. Pastikan untuk menggunakan hasil prediksi segera.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Step 3 -->
+    <div class="tutorial-step">
+      <div class="step-number">3</div>
+      <h2 class="step-title">Membaca Hasil Prediksi</h2>
+      <div class="step-content">
+        <p>Hasil prediksi akan menampilkan:</p>
+        <ul>
+          <li><strong>KECIL (9-31)</strong> - Ditandai dengan warna merah dan border merah</li>
+          <li><strong>BESAR (32-54)</strong> - Ditandai dengan warna biru diamond dan border biru</li>
+          <li>Waktu validitas prediksi (hitungan mundur 5 menit)</li>
+        </ul>
+        <p>Status akurasi saat ini: <strong>97.5%</strong> berdasarkan 2,158 data historis.</p>
+      </div>
+    </div>
+    
+    <!-- Step 4 -->
+    <div class="tutorial-step">
+      <div class="step-number">4</div>
+      <h2 class="step-title">Strategi Terbaik</h2>
+      <div class="step-content">
+        <p>Untuk hasil optimal:</p>
+        <ul>
+          <li>Gunakan prediksi segera setelah muncul (dalam 1 menit pertama)</li>
+          <li>Jangan gunakan prediksi yang sudah melewati 3 menit</li>
+          <li>Gabungkan dengan manajemen risiko pribadi Anda</li>
+          <li>Jangan terburu-buru, tunggu prediksi berikutnya jika ragu</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Step 5 -->
+    <div class="tutorial-step">
+      <div class="step-number">5</div>
+      <h2 class="step-title">Fitur Tambahan</h2>
+      <div class="step-content">
+        <p>Manfaatkan fitur eksklusif VIP:</p>
+        <ul>
+          <li><strong>Riwayat Prediksi</strong> - Lihat pola hasil sebelumnya</li>
+          <li><strong>Statistik Akurasi</strong> - Pantau performa sistem</li>
+          <li><strong>Notifikasi Real-time</strong> - Dapatkan alert saat prediksi baru tersedia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tutorial Footer -->
+  <footer class="tutorial-footer">
+    <p>© 2025 KOH ICELAND VIP | Masalah teknis? <a href="https://wa.me/6281234567890" target="_blank">Hubungi Admin</a></p>
+  </footer>
+
+  <script>
+    // Create diamond particles
+    function createDiamondParticle() {
+      const diamond = document.createElement('div');
+      diamond.className = 'diamond-particle';
+      diamond.innerHTML = '♦';
+      diamond.style.left = Math.random() * 100 + 'vw';
+      diamond.style.animationDuration = Math.random() * 3 + 2 + 's';
+      diamond.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      diamond.style.opacity = Math.random() * 0.3;
+      document.getElementById('diamondParticles').appendChild(diamond);
+      
+      setTimeout(() => {
+        diamond.remove();
+      }, 5000);
+    }
+    
+    // Initialize diamond particles
+    function initDiamonds() {
+      setInterval(createDiamondParticle, 300);
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createDiamondParticle, i * 150);
+      }
+    }
+    
+    // Initialize on load
+    window.onload = function() {
+      initDiamonds();
+    };
+  </script>
+</body>
+</html>

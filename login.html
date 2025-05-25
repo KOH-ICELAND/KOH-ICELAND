@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Lounge Access | KOH ICELAND</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #FFE8A0;
+      --gold-dark: #996515;
+      --diamond: #7DF9FF;
+      --velvet-black: #050505;
+      --rich-black: #0F0B0A;
+      --text-ivory: #FFFFF0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: 
+        radial-gradient(ellipse at center, var(--velvet-black) 0%, rgba(0,0,0,0.98) 100%),
+        url('NAGA.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-ivory);
+      overflow: hidden;
+    }
+    
+    .luxury-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, var(--velvet-black) 0%, rgba(0,0,0,0.98) 100%);
+      z-index: -1;
+    }
+    
+    .vip-access-container {
+      width: 95%;
+      max-width: 500px;
+      background: rgba(15, 15, 25, 0.8);
+      padding: 50px 40px;
+      border-radius: 16px;
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .vip-access-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .vip-logo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .vip-logo span {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .vip-logo span::before,
+    .vip-logo span::after {
+      content: "✧";
+      position: absolute;
+      color: var(--gold);
+      font-size: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.8;
+    }
+    
+    .vip-logo span::before {
+      left: -40px;
+    }
+    
+    .vip-logo span::after {
+      right: -40px;
+    }
+    
+    .vip-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .vip-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    
+    .vip-header p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .vip-input-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    .vip-input-group input {
+      width: 100%;
+      padding: 18px 25px;
+      background: rgba(30, 30, 40, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      color: var(--text-ivory);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .vip-input-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .vip-input-group i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    
+    .vip-login-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--rich-black);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 40px 0 30px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .vip-login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+    }
+    
+    .vip-login-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .vip-login-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .vip-login-btn:hover::before {
+      left: 100%;
+    }
+    
+    .vip-footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .vip-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .vip-footer a:hover {
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Diamond Particles */
+    .diamond-particle {
+      position: fixed;
+      font-size: 1rem;
+      color: var(--diamond);
+      opacity: 0;
+      animation: diamond-fall linear forwards;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes diamond-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .vip-access-container {
+        padding: 40px 30px;
+      }
+      
+      .vip-logo span {
+        font-size: 2rem;
+      }
+      
+      .vip-logo span::before,
+      .vip-logo span::after {
+        font-size: 1.2rem;
+      }
+      
+      .vip-logo span::before {
+        left: -30px;
+      }
+      
+      .vip-logo span::after {
+        right: -30px;
+      }
+      
+      .vip-header h2 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .vip-access-container {
+        padding: 35px 25px;
+      }
+      
+      .vip-logo span {
+        font-size: 1.8rem;
+      }
+      
+      .vip-input-group input {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="luxury-overlay"></div>
+  
+  <!-- Diamond Particles Background -->
+  <div id="diamondParticles"></div>
+  
+  <!-- VIP Access Container -->
+  <div class="vip-access-container">
+    <!-- VIP Logo -->
+    <div class="vip-logo">
+      <span>KOH ICELAND</span>
+    </div>
+    
+    <!-- VIP Header -->
+    <div class="vip-header">
+      <h2>EXCLUSIVE MEMBER ACCESS</h2>
+      <p>Please enter your VIP credentials to continue</p>
+    </div>
+    
+    <!-- VIP Input Fields -->
+    <div class="vip-input-group">
+      <input type="text" id="username" placeholder="VIP Username" autocomplete="off">
+      <i class="fas fa-crown"></i>
+    </div>
+    
+    <div class="vip-input-group">
+      <input type="password" id="password" placeholder="VIP Password" autocomplete="off">
+      <i class="fas fa-lock"></i>
+    </div>
+    
+    <!-- VIP Login Button -->
+    <button class="vip-login-btn" onclick="login()">
+      <i class="fas fa-unlock-alt" style="margin-right: 10px;"></i> ACCESS LOUNGE
+    </button>
+    
+    <!-- VIP Footer -->
+    <div class="vip-footer">
+      Not a VIP member? <a href="https://example.com/vip-invitation" target="_blank">Request invitation</a>
+    </div>
+  </div>
+
+  <script>
+    // Create diamond particles
+    function createDiamondParticle() {
+      const diamond = document.createElement('div');
+      diamond.className = 'diamond-particle';
+      diamond.innerHTML = '♦';
+      diamond.style.left = Math.random() * 100 + 'vw';
+      diamond.style.animationDuration = Math.random() * 3 + 2 + 's';
+      diamond.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      diamond.style.opacity = Math.random() * 0.3;
+      document.getElementById('diamondParticles').appendChild(diamond);
+      
+      setTimeout(() => {
+        diamond.remove();
+      }, 5000);
+    }
+    
+    // Initialize diamond particles
+    function initDiamonds() {
+      setInterval(createDiamondParticle, 300);
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createDiamondParticle, i * 150);
+      }
+    }
+    
+    // Login function
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      
+      if (user === "admin" && pass === "123456") {
+        // Show loading state
+        const btn = document.querySelector('.vip-login-btn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING CREDENTIALS';
+        btn.style.background = "linear-gradient(135deg, var(--gold-dark), var(--gold))";
+        
+        // Simulate authentication
+        setTimeout(() => {
+          window.location.href = "menu.html";
+        }, 1500);
+      } else {
+        alert("Invalid VIP credentials. Access denied.");
+      }
+    }
+    
+    // Initialize on load
+    window.onload = function() {
+      initDiamonds();
+    };
+  </script>
+</body>
+</html>

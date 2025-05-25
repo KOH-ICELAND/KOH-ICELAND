@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami | VIP Lounge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Marcellus&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --luxury-gold: #D4AF37;
+            --gold-light: #FFE8A0;
+            --gold-dark: #996515;
+            --diamond: #7DF9FF;
+            --velvet-black: #050505;
+            --rich-black: #0F0B0A;
+            --text-ivory: #FFFFF0;
+            --whatsapp: #25D366;
+            --telegram: #0088CC;
+            --instagram: #E1306C;
+            --tiktok: #000000;
+            --youtube: #FF0000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Marcellus', serif;
+            background: 
+                linear-gradient(rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.92)),
+                url('NAGA.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-ivory);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+        
+        .luxury-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, var(--velvet-black) 0%, rgba(0,0,0,0.98) 100%);
+            z-index: -1;
+        }
+        
+        .luxury-container {
+            width: 95%;
+            max-width: 700px;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid var(--luxury-gold);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .luxury-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Luxury Logo */
+        .luxury-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .luxury-logo-inner {
+            display: flex;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--luxury-gold);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .luxury-logo-inner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,232,160,0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .luxury-logo:hover .luxury-logo-inner::before {
+            left: 100%;
+        }
+        
+        .dice-icon {
+            font-size: 2.5rem;
+            margin: 0 20px;
+            color: var(--luxury-gold);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--luxury-gold);
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Luxury Header */
+        .luxury-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .luxury-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--luxury-gold);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        
+        .luxury-header p {
+            font-size: 1.2rem;
+            color: var(--text-ivory);
+            opacity: 0.9;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        
+        /* Social Media Links */
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 50px 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-link:hover::before {
+            left: 100%;
+        }
+        
+        /* Platform-specific colors */
+        .whatsapp {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(37, 211, 102, 0.1));
+            border-left: 4px solid var(--whatsapp);
+        }
+        
+        .telegram {
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(0, 136, 204, 0.1));
+            border-left: 4px solid var(--telegram);
+        }
+        
+        .instagram {
+            background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(225, 48, 108, 0.1));
+            border-left: 4px solid var(--instagram);
+        }
+        
+        .tiktok {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+            border-left: 4px solid var(--tiktok);
+        }
+        
+        .youtube {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
+            border-left: 4px solid var(--youtube);
+        }
+        
+        .social-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 25px;
+            color: white;
+        }
+        
+        .whatsapp .social-icon {
+            background: var(--whatsapp);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        .telegram .social-icon {
+            background: var(--telegram);
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.5);
+        }
+        
+        .instagram .social-icon {
+            background: var(--instagram);
+            box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
+        }
+        
+        .tiktok .social-icon {
+            background: var(--tiktok);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .youtube .social-icon {
+            background: var(--youtube);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        
+        .social-text {
+            font-size: 1.2rem;
+            color: var(--text-ivory);
+            font-weight: 400;
+            flex-grow: 1;
+        }
+        
+        .social-arrow {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover .social-arrow {
+            transform: translateX(5px);
+        }
+        
+        /* Back Button */
+        .back-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+            color: var(--luxury-gold);
+            padding: 15px 25px;
+            border: 1px solid var(--luxury-gold);
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .back-btn i {
+            margin-right: 10px;
+        }
+        
+        .back-btn:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.2));
+            transform: translateY(-3px);
+        }
+        
+        /* Diamond Particles */
+        .diamond-particle {
+            position: fixed;
+            font-size: 1rem;
+            color: var(--diamond);
+            opacity: 0;
+            animation: diamond-fall linear forwards;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes diamond-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .luxury-container {
+                padding: 40px 30px;
+            }
+            
+            .luxury-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .luxury-header p {
+                font-size: 1.1rem;
+                max-width: 100%;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .dice-icon {
+                font-size: 2rem;
+                margin: 0 15px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin-right: 15px;
+            }
+            
+            .social-text {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .luxury-container {
+                padding: 35px 25px;
+            }
+            
+            .luxury-logo-inner {
+                padding: 12px 20px;
+            }
+            
+            .luxury-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .social-link {
+                padding: 15px;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="luxury-overlay"></div>
+    
+    <!-- Diamond Particles Background -->
+    <div id="diamondParticles"></div>
+    
+    <!-- Luxury Container -->
+    <div class="luxury-container">
+        <!-- Luxury Logo -->
+        <div class="luxury-logo">
+            <div class="luxury-logo-inner">
+                <span class="dice-icon">🎲</span>
+                <span class="logo-text">KOH ICELAND</span>
+                <span class="dice-icon">🎲</span>
+            </div>
+        </div>
+        
+        <!-- Luxury Header -->
+        <div class="luxury-header">
+            <h1>HUBUNGI KAMI</h1>
+            <p>Tim VIP kami siap membantu Anda 24/7</p>
+        </div>
+        
+        <!-- Social Media Links -->
+        <div class="social-container">
+            <a href="https://wa.me/yourwhatsappnumber" class="social-link whatsapp" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="social-text">WhatsApp VIP</div>
+                <div class="social-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            
+            <a href="https://t.me/yourtelegramusername" class="social-link telegram" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <div class="social-text">Telegram VIP</div>
+                <div class="social-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            
+            <a href="https://instagram.com/yourinstagram" class="social-link instagram" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="social-text">Instagram Official</div>
+                <div class="social-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            
+            <a href="https://tiktok.com/@yourtiktok" class="social-link tiktok" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="social-text">TikTok Official</div>
+                <div class="social-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+            
+            <a href="https://youtube.com/yourchannel" class="social-link youtube" target="_blank">
+                <div class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="social-text">YouTube Channel</div>
+                <div class="social-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Back Button -->
+        <a href="menu.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Kembali ke Menu Utama
+        </a>
+    </div>
+
+    <script>
+        // Create diamond particles
+        function createDiamondParticle() {
+            const diamond = document.createElement('div');
+            diamond.className = 'diamond-particle';
+            diamond.innerHTML = '♦';
+            diamond.style.left = Math.random() * 100 + 'vw';
+            diamond.style.animationDuration = Math.random() * 3 + 2 + 's';
+            diamond.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            diamond.style.opacity = Math.random() * 0.3;
+            document.getElementById('diamondParticles').appendChild(diamond);
+            
+            setTimeout(() => {
+                diamond.remove();
+            }, 5000);
+        }
+        
+        // Initialize diamond particles
+        function initDiamonds() {
+            setInterval(createDiamondParticle, 300);
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createDiamondParticle, i * 150);
+            }
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            initDiamonds();
+        };
+    </script>
+</body>
+</html>
